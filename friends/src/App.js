@@ -1,20 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
+import React from 'react'; 
+import  { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
+import Login from './components/Login';
+import FriendList from './components/FriendList';
+import PrivateRoute from './components/PrivateList';
 
-function App() {
-    localStorage.clear();
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-        Friends
-        </p>
-       
-      </header>
-    </div>
-  );
+function App () {
+    retutn (
+        <Router>
+            <div className='App'>
+                <Switch>
+                    <PrivateRoute exact path='/friendlist' component={FriendList} />
+                    <Route exact path='./login' render={() => <Login />} />
+                    <Route component={Login} />
+
+                </Switch>
+            </div>
+        </Router>
+    )
 }
-
-export default App;
